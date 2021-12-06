@@ -1,0 +1,32 @@
+#N canvas 1498 42 824 446 10;
+#X declare -lib mrpeach;
+#X obj 109 51 declare -lib mrpeach;
+#X msg 130 189 disconnect;
+#X msg 224 257 send /connect \$1;
+#X obj 121 375 mrpeach/udpsend;
+#X obj 224 281 mrpeach/packOSC;
+#X obj 232 229 tgl 15 0 empty empty empty 17 7 0 10 -262144 -1 -1 0
+1;
+#X obj 403 350 mrpeach/packOSC;
+#X text 108 72 Use this patch to control the sonification parameters.
+It works in the same way as the Android app would.;
+#X msg 443 319 send /sonification ECGgrains 0.4;
+#X msg 432 292 send /sonification Marimba 0.5;
+#X msg 418 268 send /sonification Blip 0.5;
+#X msg 111 162 connect 127.0.0.0 5001;
+#X text 106 118 1 Connect to the IP from your computer or Raspberry
+Pi device. You can modify the receiving port in the CardioSounds Python
+main file.;
+#X text 222 191 2 start signal acquisition with this toggle button
+to emulate bitalino start through app;
+#X text 410 233 3 Control the sonification parameters here (sonification
+type and level);
+#X connect 1 0 3 0;
+#X connect 2 0 4 0;
+#X connect 4 0 3 0;
+#X connect 5 0 2 0;
+#X connect 6 0 3 0;
+#X connect 8 0 6 0;
+#X connect 9 0 6 0;
+#X connect 10 0 6 0;
+#X connect 11 0 3 0;
